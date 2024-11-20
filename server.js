@@ -14,15 +14,24 @@ db.connect((err) => {
     console.log('connected to the database')
 })
 
-//simple get endpoint
-app.get('/', (req, res)=>{
-    res.send('Basic for display');
+//simple get endpoint to get the patients details and display them
+app.get('/patients', (req, res)=>{
+    let sql = 'SELECT patient_id, first_name, last_name, date_of_birth FROM patients';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        return res.send(results)
+    })
 })
 
 
-
-
-
+//simple get endpoint to get the providers details and show them on the page
+app.get('/providers', (req, res)=>{
+    let sql = 'SELECT provider_speciality, first_name, last_name FROM providers';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        return res.send(results)
+    })
+})
 
 
 // set up the app to listen for a connection from a port 
