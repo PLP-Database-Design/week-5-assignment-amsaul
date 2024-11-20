@@ -16,7 +16,7 @@ db.connect((err) => {
 
 //simple get endpoint
 app.get('/', (req, res)=>{
-    res.send('king is back');
+    res.send('Basic for display');
 })
 
 
